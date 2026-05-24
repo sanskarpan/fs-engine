@@ -1,0 +1,28 @@
+name: Ops Hardening
+description: Track reliability, performance, security, or platform engineering work
+title: "[Ops]: "
+labels:
+  - ops
+  - hardening
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State the operational gap or hardening objective.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Define the systems, services, workflows, and environments in scope.
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Required Checks
+      description: List tests, dashboards, alerts, or rollout checks that must pass.
+    validations:
+      required: true

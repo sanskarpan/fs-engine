@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Policy
+    url: ./SECURITY.md
+    about: Review security reporting guidance before filing a public issue.
