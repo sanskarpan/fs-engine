@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fs-engine-backend
+  namespace: fs-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fs-engine-backend
+  template:
+    metadata:
+      labels:
+        app: fs-engine-backend
+    spec:
+      containers:
+        - name: backend
+          image: fs-engine/backend:latest
+          args: ["-addr", ":8080", "-img", "/data/disk.img"]
+          ports:
+            - containerPort: 8080
+              name: http
+          envFrom:
+            - configMapRef:
+                name: fs-engine-backend
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fs-engine-data
