@@ -1,0 +1,10 @@
+.git
+.github
+bin
+testdata/*.img
+web/node_modules
+web/dist
+web/test-results
+web/playwright-report
+perf/results
+*.log

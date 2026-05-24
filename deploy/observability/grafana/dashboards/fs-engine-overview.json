@@ -1,0 +1,58 @@
+{
+  "title": "fs-engine Overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Reads vs Writes",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        { "expr": "fs_engine_reads", "legendFormat": "reads" },
+        { "expr": "fs_engine_writes", "legendFormat": "writes" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Cache Hits vs Misses",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        { "expr": "fs_engine_cache_hits", "legendFormat": "hits" },
+        { "expr": "fs_engine_cache_miss", "legendFormat": "misses" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Journal Commits",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 8 },
+      "targets": [
+        { "expr": "fs_engine_journal_commits" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Recovery Runs",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 8 },
+      "targets": [
+        { "expr": "fs_engine_recovery_runs" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Cache Flush Errors",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 8 },
+      "targets": [
+        { "expr": "fs_engine_cache_flush_errors" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Mutation Rollbacks",
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 8 },
+      "targets": [
+        { "expr": "fs_engine_mutation_rollbacks" }
+      ]
+    }
+  ]
+}

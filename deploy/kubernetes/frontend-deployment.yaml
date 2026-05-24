@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fs-engine-frontend
+  namespace: fs-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fs-engine-frontend
+  template:
+    metadata:
+      labels:
+        app: fs-engine-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: fs-engine/frontend:latest
+          ports:
+            - containerPort: 80
+              name: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
