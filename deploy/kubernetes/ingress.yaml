@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fs-engine
+  namespace: fs-engine
+spec:
+  rules:
+    - host: fs-engine.example.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: fs-engine-backend
+                port:
+                  number: 8080
+          - path: /sse
+            pathType: Prefix
+            backend:
+              service:
+                name: fs-engine-backend
+                port:
+                  number: 8080
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: fs-engine-backend
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fs-engine-frontend
+                port:
+                  number: 80
