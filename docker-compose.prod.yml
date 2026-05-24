@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fs-engine/backend:local
+    command: ["-addr", ":8080", "-img", "/data/disk.img"]
+    environment:
+      FS_ENGINE_ALLOWED_ORIGINS: "http://localhost:8081"
+    ports:
+      - "8080:8080"
+    volumes:
+      - fs-engine-data:/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: fs-engine/frontend:local
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+volumes:
+  fs-engine-data:
