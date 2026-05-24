@@ -1,0 +1,34 @@
+name: Performance
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 6"
+
+permissions:
+  contents: read
+
+jobs:
+  benchmarks:
+    name: Go Benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Run benchmarks
+        run: |
+          mkdir -p perf/results
+          go test ./internal/... -run '^$' -bench . -benchmem -count=1 | tee perf/results/go-bench.txt
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: go-benchmarks
+          path: perf/results/go-bench.txt
