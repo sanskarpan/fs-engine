@@ -1,0 +1,16 @@
+# Binaries
+/bin/
+
+# Test and runtime images
+/testdata/*.img
+!/testdata/.gitkeep
+
+# Frontend dependencies and build output
+/web/node_modules/
+/web/dist/
+/web/playwright-report/
+/web/test-results/
+
+# Logs and editor state
+*.log
+.DS_Store
