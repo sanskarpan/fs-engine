@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fs-engine-backend
+  namespace: fs-engine
+data:
+  FS_ENGINE_ALLOWED_ORIGINS: "https://fs-engine.example.com"
