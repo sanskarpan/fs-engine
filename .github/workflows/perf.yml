@@ -28,7 +28,7 @@ jobs:
           go test ./internal/... -run '^$' -bench . -benchmem -count=1 | tee perf/results/go-bench.txt
 
       - name: Upload benchmark results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: go-benchmarks
           path: perf/results/go-bench.txt
