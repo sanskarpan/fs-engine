@@ -41,7 +41,7 @@ jobs:
           go build -o "dist/fs-engine_${GOOS}_${GOARCH}${ext}" ./cmd/server
 
       - name: Upload binary artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: server-${{ matrix.goos }}-${{ matrix.goarch }}
           path: dist/*
@@ -73,7 +73,7 @@ jobs:
         run: tar -czf ../dist-web.tar.gz dist
 
       - name: Upload web artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: web-dist
           path: dist-web.tar.gz
